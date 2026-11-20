@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>(25:00) Enfoque - Pomodoro</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body data-theme="dark" data-phase="focus" data-status="IDLE" data-alert="false">
+    <main id="app" class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <h1 class="app-title">Pomodoro</h1>
+          <span id="phase-label" class="phase-badge">Enfoque</span>
+        </div>
+        <button
+          id="btn-theme"
+          type="button"
+          class="icon-btn"
+          aria-label="Cambiar tema claro u oscuro"
+          aria-pressed="true"
+        >
+          Tema: Oscuro
+        </button>
+      </header>
+
+      <nav class="phase-tabs" role="tablist" aria-label="Fases del temporizador">
+        <button
+          type="button"
+          class="phase-tab is-active"
+          data-phase-select="focus"
+          role="tab"
+          aria-selected="true"
+        >
+          Enfoque
+        </button>
+        <button
+          type="button"
+          class="phase-tab"
+          data-phase-select="short"
+          role="tab"
+          aria-selected="false"
+        >
+          Descanso corto
+        </button>
+        <button
+          type="button"
+          class="phase-tab"
+          data-phase-select="long"
+          role="tab"
+          aria-selected="false"
+        >
+          Descanso largo
+        </button>
+      </nav>
+
+      <section class="timer-card" aria-label="Temporizador">
+        <div
+          id="phase-alert"
+          class="phase-alert"
+          role="status"
+          aria-live="polite"
+          data-alert="false"
+          hidden
+        >
+          Fase completada. Pulsa Iniciar para continuar.
+        </div>
+
+        <time id="timer-display" class="timer-display" aria-live="polite">25:00</time>
+
+        <div class="timer-controls">
+          <button id="btn-toggle" type="button" class="btn btn-primary">
+            Iniciar
+          </button>
+          <button id="btn-reset" type="button" class="btn btn-secondary">
+            Reiniciar
+          </button>
+          <button id="btn-skip" type="button" class="btn btn-secondary">
+            Saltar
+          </button>
+        </div>
+
+        <p class="shortcut-hint">
+          Atajo: <kbd>Espacio</kbd> para iniciar o pausar
+        </p>
+      </section>
+
+      <section class="status-bar" aria-label="Progreso y audio">
+        <div class="pomodoro-counter">
+          <span class="counter-label">Pomodoros completados:</span>
+          <strong id="pomodoro-count" class="counter-value">0</strong>
+          <button
+            id="btn-reset-count"
+            type="button"
+            class="btn btn-ghost"
+            aria-label="Reiniciar contador de pomodoros"
+          >
+            Reiniciar contador
+          </button>
+        </div>
+
+        <div class="audio-controls">
+          <button
+            id="btn-mute"
+            type="button"
+            class="btn btn-ghost"
+            aria-pressed="false"
+          >
+            Sonido: Activo
+          </button>
+          <label class="volume-control" for="input-volume">
+            <span>Volumen</span>
+            <input
+              id="input-volume"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.7"
+              aria-label="Volumen de alerta"
+            />
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-panel" aria-label="Configuración de duraciones">
+        <h2 class="settings-title">Duración (minutos)</h2>
+        <div class="settings-grid">
+          <label class="setting-field" for="input-focus">
+            <span>Enfoque</span>
+            <input
+              id="input-focus"
+              type="number"
+              min="1"
+              max="120"
+              step="1"
+              value="25"
+            />
+          </label>
+          <label class="setting-field" for="input-short-break">
+            <span>Descanso corto</span>
+            <input
+              id="input-short-break"
+              type="number"
+              min="1"
+              max="120"
+              step="1"
+              value="5"
+            />
+          </label>
+          <label class="setting-field" for="input-long-break">
+            <span>Descanso largo</span>
+            <input
+              id="input-long-break"
+              type="number"
+              min="1"
+              max="120"
+              step="1"
+              value="15"
+            />
+          </label>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
